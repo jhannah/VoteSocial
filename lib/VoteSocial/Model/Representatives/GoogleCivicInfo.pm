@@ -1,8 +1,12 @@
 package VoteSocial::Model::Representatives::GoogleCivicInfo;
+use Config::General qw(ParseConfig);
+use LWP::UserAgent;
 use Moose;
 use namespace::autoclean;
 
 extends 'Catalyst::Model';
+
+my $config = {ParseConfig("votesocial.conf")}->{google_civic_info_api};
 
 =head1 NAME
 
@@ -12,8 +16,22 @@ VoteSocial::Model::Representatives::GoogleCivicInfo - Catalyst Model
 
 Catalyst Model.
 
-
 =encoding utf8
+
+=cut
+
+sub html {
+  my ($self) = @_;
+  my $uri = URI->new($config->{base_url} . "/representatives");
+  $uri->query_param(key     => $config->{key});
+  $uri->query_param(address => "16204 Timberlane Dr Omaha NE 68136");
+
+  my $ua = LWP::UserAgent->new;
+  my $res = $ua->get($uri);
+
+  return "<pre>Request: $uri\nResponse: " . $res->content;
+}
+
 
 =head1 AUTHOR
 
