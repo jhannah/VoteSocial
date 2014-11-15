@@ -11,9 +11,21 @@ Implementation
 --------------
 
 Vote Social aims to be agnostic about data sources and social 
-networks. Our Models are generic, not bound to any specific
+networks. Our high-level Models are generic, not bound to any specific
 data source. We hope to remain a relevant technology platform
 as election systems evolve, and as social networks wax and wane 
 in popularity.
+
+TODO - Integrations
+-------------------
+
+Election data:
+* [Google Civic Data API](https://developers.google.com/civic-information/)
+
+Social networks:
+* Twitter
+* FaceBook
+
+
 
 
