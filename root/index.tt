@@ -10,36 +10,80 @@
     <script src="/static/bootstrap/js/bootstrap.min.js"></script>
 
 
+    <form>
+      <input name="address" value="16204 Timberlane Dr Omaha NE 68136">
+      <input type="submit">
+    </form>
+
+
+    Request: [% content.request %]
+
+    
     <h2>Officials</h2>    
     <ul>
     [% FOREACH o IN content.officials %]
       <li>
-        <img src="[% o.photoUrl %]" style="height:60px">
+        [% IF o.photoUrl %]
+           <img src="[% o.photoUrl %]" style="height:60px">
+        [% END %]
         [% o.name %], 
-        [% o.party %],
+        [% IF o.party %]
+           [% o.party %]
+        [% END %]
 
+        [% FOREACH u IN o.urls %]
+            <a href="[% u %]" target="_blank"><img src="/static/images/www32.jpeg"></a>
+        [% END %]
         [% FOREACH c IN o.channels %]
           [% IF c.type == "Facebook" %]
-            <a href="http://facebook.com/[% c.id %]"><img src="/static/images/facebook32.png"></a>
+            <a href="http://facebook.com/[% c.id %]" target="_blank"><img src="/static/images/facebook32.png"></a>
           [% END %]
           [% IF c.type == "Twitter" %]
-            <a href="http://twitter.com/[% c.id %]"><img src="/static/images/twitter32.png"></a>
+            <a href="http://twitter.com/[% c.id %]" target="_blank"><img src="/static/images/twitter32.png"></a>
           [% END %]
           [% IF c.type == "YouTube" %]
-            <a href="http://youtube.com/[% c.id %]"><img src="/static/images/youtube32.png"></a>
+            <a href="http://youtube.com/[% c.id %]" target="_blank"><img src="/static/images/youtube32.png"></a>
           [% END %]
           [% IF c.type == "GooglePlus" %]
-            <a href="http://plus.google.com/[% c.id %]"><img src="/static/images/gplus32.png"></a>
+            <a href="http://plus.google.com/[% c.id %]" target="_blank"><img src="/static/images/gplus32.png"></a>
           [% END %]
         [% END %]
 
       </li>
     [% END %]
     </ul>
-
     <pre>
     [% USE Dumper %]
-    [% Dumper.dump(content) %]
+    [% Dumper.dump(content.officials) %]
+    </pre>
+
+
+
+    <h2>Offices</h2>    
+    <ul>
+    [% FOREACH o IN content.offices %]
+      <li>
+        [% o.name %], 
+      </li>
+    [% END %]
+    </ul>
+    <pre>
+    [% Dumper.dump(content.offices) %]
+    </pre>
+
+
+
+    <h2>Divisions</h2>    
+    <ul>
+    [% d = content.divisions;
+       FOREACH id IN d.keys %]
+      <li>
+        [% d.$id.name %], 
+      </li>
+    [% END %]
+    </ul>
+    <pre>
+    [% Dumper.dump(content.divisions) %]
     </pre>
 
 
