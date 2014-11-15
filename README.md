@@ -26,6 +26,11 @@ Social networks:
 * Twitter
 * FaceBook
 
+Friends
+-------
 
+Other interesting election-oriented projects:
+* https://www.votersnap.com/
+* https://ballothero.com/
 
 
