@@ -31,8 +31,8 @@ The root page (/)
 sub index :Path :Args(0) {
   my ( $self, $c ) = @_;
 
-  $c->response->body(
-  	$c->model('Representatives::GoogleCivicInfo')->html
+  $c->stash(
+  	content => $c->model('Representatives::GoogleCivicInfo')->fetch
   );
 }
 

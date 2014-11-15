@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Vote Social</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/static/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
+  </head>
+  <body>
+    <h1>Vote Social</h1>
+    <script src="/static/bootstrap/js/bootstrap.min.js"></script>
+
+
+    <h2>Officials</h2>    
+    <ul>
+    [% FOREACH o IN content.officials %]
+      <li>
+        <img src="[% o.photoUrl %]" style="height:60px">
+        [% o.name %], 
+        [% o.party %],
+
+        [% FOREACH c IN o.channels %]
+          [% IF c.type == "Facebook" %]
+            <a href="http://facebook.com/[% c.id %]"><img src="/static/images/facebook32.png"></a>
+          [% END %]
+          [% IF c.type == "Twitter" %]
+            <a href="http://twitter.com/[% c.id %]"><img src="/static/images/twitter32.png"></a>
+          [% END %]
+          [% IF c.type == "YouTube" %]
+            <a href="http://youtube.com/[% c.id %]"><img src="/static/images/youtube32.png"></a>
+          [% END %]
+          [% IF c.type == "GooglePlus" %]
+            <a href="http://plus.google.com/[% c.id %]"><img src="/static/images/gplus32.png"></a>
+          [% END %]
+        [% END %]
+
+      </li>
+    [% END %]
+    </ul>
+
+    <pre>
+    [% USE Dumper %]
+    [% Dumper.dump(content) %]
+    </pre>
+
+
+  </body>
+</html>

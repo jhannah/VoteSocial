@@ -1,6 +1,7 @@
 package VoteSocial::Model::Representatives::GoogleCivicInfo;
 use Config::General qw(ParseConfig);
 use LWP::UserAgent;
+use JSON;
 use Moose;
 use namespace::autoclean;
 
@@ -20,7 +21,7 @@ Catalyst Model.
 
 =cut
 
-sub html {
+sub fetch {
   my ($self) = @_;
   my $uri = URI->new($config->{base_url} . "/representatives");
   $uri->query_param(key     => $config->{key});
@@ -29,7 +30,10 @@ sub html {
   my $ua = LWP::UserAgent->new;
   my $res = $ua->get($uri);
 
-  return "<pre>Request: $uri\nResponse: " . $res->content;
+  my $response = decode_json $res->content;
+  $response->{request} = "$uri";
+
+  return $response;
 }
 
 
