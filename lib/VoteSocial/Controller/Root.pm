@@ -32,7 +32,10 @@ sub index :Path :Args(0) {
   my ( $self, $c ) = @_;
 
   $c->stash(
-  	content => $c->model('Representatives::GoogleCivicInfo')->fetch
+  	content => $c->model('Representatives::GoogleCivicInfo')->fetch(
+  	  $c->req->param('address')
+  	),
+  	debug   => $c->req->param('debug'),
   );
 }
 

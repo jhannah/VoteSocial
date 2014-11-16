@@ -22,10 +22,10 @@ Catalyst Model.
 =cut
 
 sub fetch {
-  my ($self) = @_;
+  my ($self, $address) = @_;
   my $uri = URI->new($config->{base_url} . "/representatives");
   $uri->query_param(key     => $config->{key});
-  $uri->query_param(address => "16204 Timberlane Dr Omaha NE 68136");
+  $uri->query_param(address => $address);
 
   my $ua = LWP::UserAgent->new;
   my $res = $ua->get($uri);

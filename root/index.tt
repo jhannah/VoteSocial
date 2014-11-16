@@ -9,88 +9,26 @@
     <h1>Vote Social</h1>
     <script src="/static/bootstrap/js/bootstrap.min.js"></script>
 
-
     <form>
-      <input name="address" value="16204 Timberlane Dr Omaha NE 68136">
+      <input name="address" value="[% content.normalizedInput.line1 %] [% content.normalizedInput.city %] [% content.normalizedInput.state %] [% content.normalizedInput.zip %] ">
       <input type="submit">
     </form>
 
-
-    Request: [% content.request %]
-
-
-    <h2>Officials</h2>    
-    <ul>
     [% officials = {};
        i = 0;
        FOREACH o IN content.officials;
-         officials.$i = o %]
-      <li>
-        [% IF o.photoUrl %]
-           <img src="[% o.photoUrl %]" style="height:60px">
-        [% END %]
-        [% o.name %], 
-        [% IF o.party %]
-           [% o.party %]
-        [% END %]
+         officials.$i = o;
+       i = i + 1;
+       END;
 
-        [% FOREACH u IN o.urls %]
-            <a href="[% u %]" target="_blank"><img src="/static/images/www32.jpeg"></a>
-        [% END %]
-
-        [% FOREACH c IN o.channels %]
-          [% IF c.type == "Facebook" %]
-            <a href="http://facebook.com/[% c.id %]" target="_blank"><img src="/static/images/facebook32.png"></a>
-          [% END %]
-          [% IF c.type == "Twitter" %]
-            <a href="http://twitter.com/[% c.id %]" target="_blank"><img src="/static/images/twitter32.png"></a>
-          [% END %]
-          [% IF c.type == "YouTube" %]
-            <a href="http://youtube.com/[% c.id %]" target="_blank"><img src="/static/images/youtube32.png"></a>
-          [% END %]
-          [% IF c.type == "GooglePlus" %]
-            <a href="http://plus.google.com/[% c.id %]" target="_blank"><img src="/static/images/gplus32.png"></a>
-          [% END %]
-        [% END %]
-
-      </li>
-      [% i = i + 1; %]
-    [% END %]
-    </ul>
-    <pre>
-    [% USE Dumper %]
-    [% Dumper.dump(content.officials) %]
-    [%# Dumper.dump(officials) %]
-    </pre>
-
-
-
-    <h2>Offices</h2>    
-    <ul>
-    [% offices = {};
+       offices = {};
        i = 0;
        FOREACH o IN content.offices;
-         offices.$i = o %]
-      <li>
-        [% FOREACH l IN o.levels %]
-          [% l %]: 
-        [% END %]
-        [% o.name %]:
-        [% FOREACH j IN o.officialIndices %]
-          [% officials.$j.name %]
-        [% END %]
-      </li>
-      [% i = i + 1 %]
-    [% END %]
-    </ul>
-    <pre>
-    [% Dumper.dump(content.offices) %]
-    [% Dumper.dump(offices) %]
-    </pre>
+         offices.$i = o;
+         i = i + 1;
+       END;
+    %]
 
-
-
-    <h2>Divisions</h2>    
     <ul>
     [% d = content.divisions;
        FOREACH id IN d.keys %]
@@ -103,7 +41,7 @@
         </li>
         <ul>
         [% FOREACH j IN office.officialIndices %]
-          <li>[% officials.$j.name %] ([% j %])</li> 
+          <li>[% INCLUDE official.tt official=officials.$j %]</li>
         [% END %]
         </ul>
         </li>
@@ -112,10 +50,13 @@
     </li>
     [% END %]
     </ul>
-    <pre>
-    [% Dumper.dump(content.divisions) %]
-    </pre>
 
+[% IF debug %]
+    <pre>
+      [% USE Dumper %]
+      [% Dumper.dump(content) %]
+    </pre>
+[% END %]
 
   </body>
 </html>
