@@ -31,7 +31,7 @@
 
     <ul>
     [% d = content.divisions;
-       FOREACH id IN d.keys %]
+       FOREACH id IN d.sort_by_division_id_length %]
       <li>[% d.$id.name %]</li>
       <ul>
       [% FOREACH i IN d.$id.officeIndices %]

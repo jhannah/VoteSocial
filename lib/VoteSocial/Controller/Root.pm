@@ -37,6 +37,13 @@ sub index :Path :Args(0) {
   	),
   	debug   => $c->req->param('debug'),
   );
+
+  $Template::Stash::HASH_OPS->{ sort_by_division_id_length } = sub {
+    my ($hash) = @_;
+	return sort {
+	  length($a) <=> length($b)
+	} keys %$hash
+  };
 }
 
 =head2 default
