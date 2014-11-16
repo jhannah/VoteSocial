@@ -30,8 +30,9 @@ Friends
 -------
 
 Other interesting election-oriented projects:
-* https://www.votersnap.com/
-* https://ballothero.com/
+* http://democracyos.org/ (https://github.com/DemocracyOS/app)
+* https://www.votersnap.com/ (closed source)
+* https://ballothero.com/ (closed source)
 
 Run the server 
 --------------
