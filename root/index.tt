@@ -10,8 +10,13 @@
     <script src="/static/bootstrap/js/bootstrap.min.js"></script>
 
     <form>
-      <input name="address" value="[% content.normalizedInput.line1 %] [% content.normalizedInput.city %] [% content.normalizedInput.state %] [% content.normalizedInput.zip %] ">
-      <input type="submit">
+      <fieldset>
+        <input type="text" name="address" placeholder="Your address..." 
+          [% IF content.normalizedInput %]
+             value="[% content.normalizedInput.line1 %] [% content.normalizedInput.city %] [% content.normalizedInput.state %] [% content.normalizedInput.zip %]"
+          [% END %]  
+        >
+      </fieldset>
     </form>
 
     [% officials = {};
