@@ -35,6 +35,7 @@ sub index :Path :Args(0) {
   	content => $c->model('Representatives::GoogleCivicInfo')->fetch(
   	  $c->req->param('address')
   	),
+  	version => $VoteSocial::VERSION,
   	debug   => $c->req->param('debug'),
   );
 
