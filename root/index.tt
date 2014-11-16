@@ -1,17 +1,10 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>Vote Social</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="/static/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
-  </head>
-  <body>
-    <h1>Vote Social</h1>
-    <script src="/static/bootstrap/js/bootstrap.min.js"></script>
+[% WRAPPER layout.tt
+     title = "Vote Social"
+%]
 
     <form>
       <fieldset>
-        <input type="text" name="address" placeholder="Your address..." 
+        <input type="text" name="address" style="width:400px" placeholder="Your address goes here" 
           [% IF content.normalizedInput %]
              value="[% content.normalizedInput.line1 %] [% content.normalizedInput.city %] [% content.normalizedInput.state %] [% content.normalizedInput.zip %]"
           [% END %]  
@@ -56,12 +49,15 @@
     [% END %]
     </ul>
 
-[% IF debug %]
-    <pre>
-      [% USE Dumper %]
-      [% Dumper.dump(content) %]
-    </pre>
+
+    [% IF debug %]
+        <pre>
+          [% USE Dumper %]
+          [% Dumper.dump(content) %]
+        </pre>
+    [% END %]
+
+
+
 [% END %]
 
-  </body>
-</html>
