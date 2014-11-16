@@ -67,17 +67,25 @@
 
     <h2>Offices</h2>    
     <ul>
-    [% FOREACH o IN content.offices %]
+    [% offices = {};
+       i = 0;
+       FOREACH o IN content.offices;
+         offices.$i = o %]
       <li>
+        [% FOREACH l IN o.levels %]
+          [% l %]: 
+        [% END %]
         [% o.name %]:
-        [% FOREACH i IN o.officialIndices %]
-          [% officials.$i.name %]
+        [% FOREACH j IN o.officialIndices %]
+          [% officials.$j.name %]
         [% END %]
       </li>
+      [% i = i + 1 %]
     [% END %]
     </ul>
     <pre>
     [% Dumper.dump(content.offices) %]
+    [% Dumper.dump(offices) %]
     </pre>
 
 
@@ -86,9 +94,22 @@
     <ul>
     [% d = content.divisions;
        FOREACH id IN d.keys %]
-      <li>
-        [% d.$id.name %], 
-      </li>
+      <li>[% d.$id.name %]</li>
+      <ul>
+      [% FOREACH i IN d.$id.officeIndices %]
+        <li>
+        [% office = offices.$i %]
+        [% office.name %] ([% i %])
+        </li>
+        <ul>
+        [% FOREACH j IN office.officialIndices %]
+          <li>[% officials.$j.name %] ([% j %])</li> 
+        [% END %]
+        </ul>
+        </li>
+      [% END %]
+      </ul>
+    </li>
     [% END %]
     </ul>
     <pre>
