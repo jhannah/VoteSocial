@@ -18,10 +18,13 @@
 
     Request: [% content.request %]
 
-    
+
     <h2>Officials</h2>    
     <ul>
-    [% FOREACH o IN content.officials %]
+    [% officials = {};
+       i = 0;
+       FOREACH o IN content.officials;
+         officials.$i = o %]
       <li>
         [% IF o.photoUrl %]
            <img src="[% o.photoUrl %]" style="height:60px">
@@ -34,6 +37,7 @@
         [% FOREACH u IN o.urls %]
             <a href="[% u %]" target="_blank"><img src="/static/images/www32.jpeg"></a>
         [% END %]
+
         [% FOREACH c IN o.channels %]
           [% IF c.type == "Facebook" %]
             <a href="http://facebook.com/[% c.id %]" target="_blank"><img src="/static/images/facebook32.png"></a>
@@ -50,11 +54,13 @@
         [% END %]
 
       </li>
+      [% i = i + 1; %]
     [% END %]
     </ul>
     <pre>
     [% USE Dumper %]
     [% Dumper.dump(content.officials) %]
+    [%# Dumper.dump(officials) %]
     </pre>
 
 
@@ -63,7 +69,10 @@
     <ul>
     [% FOREACH o IN content.offices %]
       <li>
-        [% o.name %], 
+        [% o.name %]:
+        [% FOREACH i IN o.officialIndices %]
+          [% officials.$i.name %]
+        [% END %]
       </li>
     [% END %]
     </ul>
