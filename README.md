@@ -33,4 +33,13 @@ Other interesting election-oriented projects:
 * https://www.votersnap.com/
 * https://ballothero.com/
 
+Run the server 
+--------------
+
+Developers can run script/votesocial_server.pl to test the application.
+
+Launch the web app on Jay's linode:
+
+   plackup -Ilib --listen 69.164.194.243:5000 --server Starman --daemonize votesocial.psgi
+   ps -ef | grep starman   # 1 master, 5 workers
 
