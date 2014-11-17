@@ -1,6 +1,10 @@
 [% WRAPPER layout.tt
      title = "Vote Social"
 %]
+    <p>Election data + social networking</p>
+    <p>What's on your upcoming ballot? Have you done your research? Share your
+    thoughts and conclusions with your friends. Who are your friends voting for?
+    Why? Discuss!</p>
 
     <form>
       <fieldset>
