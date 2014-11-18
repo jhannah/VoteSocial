@@ -5,6 +5,8 @@
     <p>What's on your upcoming ballot? Have you done your research? Share your
     thoughts and conclusions with your friends. Who are your friends voting for?
     Why? Discuss!</p>
+    <p>2014-11-17 status update: Lots of features coming. For now this just lists 
+    all your politicians based on your home address.</p>
 
     <form>
       <fieldset>
@@ -39,7 +41,7 @@
       [% FOREACH i IN d.$id.officeIndices %]
         <li>
         [% office = offices.$i %]
-        [% office.name %] ([% i %])
+        [% office.name %]
         </li>
         <ul>
         [% FOREACH j IN office.officialIndices %]
