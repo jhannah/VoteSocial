@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="/static/bootstrap/css/bootstrap-social.css">
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
   </head>
-  <body>
+  <body style="padding-top: 70px;">
 
     <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
       <div class="container">
@@ -31,7 +31,7 @@
       </div>
     </nav>
 
-    <div class="container" style="padding-top: 70px;">
+    <div class="container">
       <div class="starter-template">
         <h1>Vote Social</h1>
 
@@ -41,6 +41,7 @@
 
 
 
+        <p>Version [% version %]. <a href="https://github.com/jhannah/VoteSocial">Patches welcome!</a></p>
       </div>
     </div><!-- /.container -->
 
@@ -52,7 +53,6 @@
     <a href="https://github.com/jhannah/VoteSocial"><img style="position: absolute; top: 0; right: 0; border: 0; z-index: 1050" src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png" alt="Fork me on GitHub"></a>
 
 
-    <p>Version [% version %]. <a href="https://github.com/jhannah/VoteSocial">Patches welcome!</a></p>
 
     <script src="/static/bootstrap/js/bootstrap.min.js"></script>
   </body>

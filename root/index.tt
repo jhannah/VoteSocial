@@ -25,7 +25,7 @@
 
       </div>
       <div class="col-sm-4">
-        <a class="btn btn-block btn-social btn-twitter">
+        <a class="btn btn-block btn-social btn-twitter" href="http://twitter.com">
           <i class="fa fa-twitter"></i> Sign in with Twitter
         </a>
         <a class="btn btn-block btn-social btn-facebook">
