@@ -10,7 +10,7 @@
 
     <form>
       <fieldset>
-        <input type="text" name="address" style="width:400px" placeholder="Your address goes here" 
+        <input type="text" name="address" style="width:400px" placeholder="Your street address" 
           [% IF content.normalizedInput %]
              value="[% content.normalizedInput.line1 %] [% content.normalizedInput.city %] [% content.normalizedInput.state %] [% content.normalizedInput.zip %]"
           [% END %]  
