@@ -1,26 +1,40 @@
 [% WRAPPER layout.tt
      title = "Vote Social"
 %]
-    <p>Election data + social networking</p>
-    <p>What's on your upcoming ballot? Have you done your research? Share your
-    thoughts and conclusions with your friends. Who are your friends voting for?
-    Why? Discuss!</p>
-    <p>2014-11-17 status update: Lots of features coming. For now this just lists 
-    all your politicians based on your home address.</p>
+ 
 
-    <form>
-      <fieldset>
-        <input type="text" name="address" style="width:400px" placeholder="Your street address" 
-          [% IF content.normalizedInput %]
-             value="[% content.normalizedInput.line1 %] [% content.normalizedInput.city %] [% content.normalizedInput.state %] [% content.normalizedInput.zip %]"
-          [% END %]  
-        >
-      </fieldset>
-    </form>
 
-    <a class="btn btn-block btn-social btn-twitter">
-      <i class="fa fa-twitter"></i> Sign in with Twitter
-    </a>
+    <div class="row">
+      <div class="col-sm-8">
+
+      <p>Election data + social networking</p>
+      <p>What's on your upcoming ballot? Have you done your research? Share your
+      thoughts and conclusions with your friends. Who are your friends voting for?
+      Why? Discuss!</p>
+      <p>2014-11-17 status update: Lots of features coming. For now this just lists 
+      all your politicians based on your home address.</p>
+      <form>
+        <fieldset>
+          <input type="text" name="address" style="width:400px" placeholder="Your street address" 
+            [% IF content.normalizedInput %]
+               value="[% content.normalizedInput.line1 %] [% content.normalizedInput.city %] [% content.normalizedInput.state %] [% content.normalizedInput.zip %]"
+            [% END %]  
+          >
+        </fieldset>
+      </form>
+
+      </div>
+      <div class="col-sm-4">
+        <a class="btn btn-block btn-social btn-twitter">
+          <i class="fa fa-twitter"></i> Sign in with Twitter
+        </a>
+        <a class="btn btn-block btn-social btn-facebook">
+          <i class="fa fa-facebook"></i> Sign in with Facebook
+        </a>
+      </div>
+
+    </div>
+
 
     [% officials = {};
        i = 0;

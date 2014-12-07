@@ -3,15 +3,17 @@
   <head>
     <title>Vote Social</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="/static/jquery-2.1.1.min.js"></script>
     <link href="/static/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <link rel="stylesheet" href="/static/bootstrap/css/bootstrap-social.css">
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
   </head>
   <body>
     <h1>Vote Social</h1>
     <script src="/static/bootstrap/js/bootstrap.min.js"></script>
 
-    [% content %]
 
+    [% content %]
 
 
 <!--
