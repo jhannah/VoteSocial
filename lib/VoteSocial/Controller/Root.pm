@@ -59,6 +59,35 @@ sub default :Path {
     $c->response->status(404);
 }
 
+
+sub login : Local {
+   my ($self, $c) = @_;
+    
+#   my $realm = $c->get_auth_realm('twitter');
+#   $c->res->redirect( $realm->credential->authenticate_twitter_url($c) );
+}
+
+
+sub callback : Local {
+   my ($self, $c) = @_;
+    
+   if (my $user = $c->authenticate(undef,'twitter')) {
+               # user has an account - redirect or do something cool
+       $c->res->redirect("/super/secret/member/area");
+       }
+       else {
+               # user doesn't have an account - either detect Twitter
+               # credentials and create one, or return an error.
+               #
+               # Note that "request_token" and "request_token_secret"
+               # are stored in $c->user_session as hashref variables under
+               # the same names
+       }
+}
+
+
+
+
 =head2 end
 
 Attempt to render a view, if needed.

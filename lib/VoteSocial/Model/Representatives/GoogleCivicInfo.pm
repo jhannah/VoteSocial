@@ -30,10 +30,10 @@ sub fetch {
   my $ua = LWP::UserAgent->new;
   my $res = $ua->get($uri);
 
-  my $response = decode_json $res->content;
-  $response->{request} = "$uri";
+#  my $response = decode_json $res->content;
+#  $response->{request} = "$uri";
 
-  return $response;
+#  return $response;
 }
 
 

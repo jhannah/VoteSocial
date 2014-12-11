@@ -17,9 +17,14 @@ use Catalyst::Runtime 5.80;
 #                 directory
 
 use Catalyst qw/
-    -Debug
-    ConfigLoader
-    Static::Simple
+  -Debug
+  ConfigLoader
+  Static::Simple
+  Authentication
+  Session
+  Session::Store::FastMmap
+  Session::State::Cookie
+  Session::PerUser
 /;
 
 extends 'Catalyst';
