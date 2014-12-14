@@ -3,6 +3,7 @@ use Moose;
 use namespace::autoclean;
 
 use Catalyst::Runtime 5.80;
+use Log::Log4perl::Catalyst;
 
 # Set flags and add plugins for the application.
 #
@@ -46,6 +47,8 @@ __PACKAGE__->config(
     disable_component_resolution_regex_fallback => 1,
     enable_catalyst_header => 1, # Send X-Catalyst header
 );
+__PACKAGE__->log(Log::Log4perl::Catalyst->new('l4p.conf'));
+
 
 # Start the application
 __PACKAGE__->setup();
