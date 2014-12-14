@@ -7,7 +7,7 @@ use namespace::autoclean;
 
 extends 'Catalyst::Model';
 
-my $config = {ParseConfig("votesocial.conf")}->{google_civic_info_api};
+my $config = {ParseConfig("votesocial_local.conf")}->{google_civic_info_api};
 
 =head1 NAME
 
@@ -30,10 +30,10 @@ sub fetch {
   my $ua = LWP::UserAgent->new;
   my $res = $ua->get($uri);
 
-#  my $response = decode_json $res->content;
-#  $response->{request} = "$uri";
+  my $response = decode_json $res->content;
+  $response->{request} = "$uri";
 
-#  return $response;
+  return $response;
 }
 
 
