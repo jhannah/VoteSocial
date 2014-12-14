@@ -77,7 +77,12 @@
     [% IF debug %]
         <pre>
           [% USE Dumper %]
+        content:
           [% Dumper.dump(content) %]
+        c.user:
+          [% Dumper.dump(c.user) %]
+        c.session:
+          [% Dumper.dump(c.session) %]
         </pre>
     [% END %]
 

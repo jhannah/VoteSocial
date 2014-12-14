@@ -41,10 +41,11 @@ sub index :Path :Args(0) {
 sub callback : Local {
   my ($self, $c) = @_;
 
-  if (my $user = $c->authenticate(undef,'Twitter')) {
+  if (my $user = $c->authenticate(undef,'twitter')) {
     # user has an account - redirect or do something cool
-  	$c->res->redirect("/super/secret/member/area");
+    $c->log->debug("Twitter callback success :)");
   } else {
+    $c->log->debug("Twitter callback failure :(");
     # user doesn't have an account - either detect Twitter
     # credentials and create one, or return an error.
     #
@@ -52,6 +53,7 @@ sub callback : Local {
     # are stored in $c->user_session as hashref variables under
     # the same names
   }
+  $c->res->redirect("/");
 }
 
 

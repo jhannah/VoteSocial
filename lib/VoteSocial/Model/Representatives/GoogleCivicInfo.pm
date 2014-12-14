@@ -23,10 +23,12 @@ Catalyst Model.
 
 sub fetch {
   my ($self, $address) = @_;
+  return 1 unless $address;
   my $uri = URI->new($config->{base_url} . "/representatives");
   $uri->query_param(key     => $config->{key});
   $uri->query_param(address => $address);
 
+  warn "Fetching $uri...";
   my $ua = LWP::UserAgent->new;
   my $res = $ua->get($uri);
 
