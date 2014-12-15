@@ -26,6 +26,7 @@ use Catalyst qw/
   Session::Store::FastMmap
   Session::State::Cookie
   Session::PerUser
+  Facebook
 /;
 
 extends 'Catalyst';
