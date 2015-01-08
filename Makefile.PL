@@ -16,6 +16,7 @@ requires 'Catalyst::Plugin::Session::PerUser';
 requires 'Catalyst::Plugin::Session::State::Cookie';
 requires 'Catalyst::Plugin::Session::Store::FastMmap';
 requires 'Catalyst::Authentication::Credential::Twitter';
+requires 'Catalyst::Authentication::Credential::Facebook::OAuth2';
 requires 'Catalyst::Action::RenderView';
 requires 'Moose';
 requires 'namespace::autoclean';
